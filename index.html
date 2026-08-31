@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f766e">
+<title>胡志明市 9/3–9/6 家庭美食行程</title>
+<style>
+:root{
+  --bg:#f6f7f8; --card:#fff; --ink:#17202a; --muted:#697586;
+  --brand:#0f766e; --brand2:#14b8a6; --accent:#f59e0b; --danger:#dc2626;
+  --line:#e7eaee; --soft:#ecfdf5; --soft2:#fff7ed;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.55}
+a{color:inherit}
+.hero{background:linear-gradient(145deg,#0f766e,#115e59 65%,#134e4a);color:#fff;padding:28px 18px 24px;border-radius:0 0 28px 28px;box-shadow:0 10px 28px rgba(15,118,110,.22)}
+.hero .eyebrow{font-size:13px;opacity:.8;letter-spacing:.08em}
+.hero h1{font-size:26px;line-height:1.2;margin:6px 0 8px}
+.hero p{margin:0;opacity:.9;font-size:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.18);padding:7px 10px;border-radius:999px;font-size:13px}
+main{max-width:760px;margin:auto;padding:16px 14px 96px}
+.notice{background:#fff7ed;border:1px solid #fed7aa;border-radius:16px;padding:13px 14px;margin-bottom:14px;font-size:13px}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.qbtn{display:flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;font-weight:700;font-size:14px;box-shadow:0 4px 12px rgba(15,23,42,.04)}
+.section-title{display:flex;align-items:end;justify-content:space-between;margin:24px 2px 10px}
+.section-title h2{margin:0;font-size:20px}
+.section-title small{color:var(--muted)}
+.day{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 7px 20px rgba(15,23,42,.045)}
+.day-head{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.day-num{min-width:54px;height:54px;border-radius:16px;background:var(--brand);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;line-height:1.1}
+.day-num b{font-size:19px}
+.day-head h3{margin:0;font-size:18px}
+.day-head p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.timeline{position:relative;margin-left:8px}
+.stop{position:relative;padding:0 0 16px 26px}
+.stop:before{content:"";position:absolute;left:4px;top:9px;width:10px;height:10px;background:var(--brand2);border-radius:50%;box-shadow:0 0 0 4px #ccfbf1}
+.stop:after{content:"";position:absolute;left:8.5px;top:21px;bottom:-1px;width:1px;background:#cbd5e1}
+.stop:last-child:after{display:none}
+.time{font-size:12px;font-weight:800;color:var(--brand);letter-spacing:.02em}
+.stop h4{margin:2px 0 3px;font-size:16px}
+.stop p{margin:0;color:#53606e;font-size:13px}
+.map{display:inline-flex;align-items:center;gap:5px;margin-top:8px;text-decoration:none;color:#fff;background:var(--brand);padding:8px 11px;border-radius:10px;font-size:13px;font-weight:800}
+.map.secondary{background:#334155}
+.food-grid{display:grid;gap:12px}
+.food{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:0 5px 16px rgba(15,23,42,.04)}
+.food-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.food h3{margin:0;font-size:17px;line-height:1.3}
+.badge{white-space:nowrap;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:800;background:var(--soft);color:#047857}
+.badge.must{background:#fff1f2;color:#be123c}
+.food .desc{color:#53606e;font-size:13px;margin:8px 0}
+.price{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0}
+.price span{font-size:12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:9px;padding:6px 8px}
+.addr{font-size:12px;color:var(--muted);margin-top:7px}
+details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-top:10px}
+summary{font-weight:800;cursor:pointer}
+details p{font-size:13px;color:#53606e;margin:8px 0 0}
+.tip{border-left:4px solid var(--accent);background:#fffbeb;border-radius:12px;padding:10px 12px;font-size:13px;margin-top:10px}
+.bottom{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:8px max(10px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));z-index:20}
+.bottom-inner{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.bottom a{text-decoration:none;text-align:center;font-size:11px;color:#475569;padding:7px 4px;border-radius:10px}
+.bottom b{display:block;font-size:18px;line-height:1.1}
+footer{text-align:center;color:#94a3b8;font-size:11px;padding:20px 0 6px}
+@media (min-width:640px){.food-grid{grid-template-columns:1fr 1fr} .hero h1{font-size:32px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="eyebrow">HO CHI MINH CITY · FAMILY FOOD TRIP</div>
+  <h1>胡志明市 9/3–9/6<br>7 人家庭美食行程</h1>
+  <p>2 位長輩｜每天先拜龍華寺｜中午避暑｜餐廳與景點集中安排</p>
+  <div class="pills">
+    <span class="pill">✈️ 9/3 11:00 前抵達</span>
+    <span class="pill">✈️ 9/6 07:00 起飛</span>
+    <span class="pill">💱 1 TWD ≈ 823 VND</span>
+  </div>
+</header>
+
+<main>
+  <div class="notice">
+    <b>價格說明：</b>以下是方便旅途中抓預算的約略值，實際菜單、加點、服務費與稅金可能不同。台幣以 <b>1 TWD ≈ 823 VND</b> 換算。
+  </div>
+
+  <div class="quick">
+    <a class="qbtn" href="https://www.google.com/maps/search/?api=1&query=Piano+Hotel+165%2F42+Nguyen+Thai+Binh+Ho+Chi+Minh+City" target="_blank">🏨 飯店導航</a>
+    <a class="qbtn" href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank">🙏 龍華寺導航</a>
+  </div>
+
+  <div class="section-title" id="itinerary"><h2>每日行程</h2><small>長輩友善版</small></div>
+
+  <section class="day">
+    <div class="day-head">
+      <div class="day-num"><span>SEP</span><b>03</b></div>
+      <div><h3>抵達・買供品・龍華寺・Pizza</h3><p>第一天不要塞太滿，保留午休與交通彈性</p></div>
+    </div>
+    <div class="timeline">
+      <div class="stop"><div class="time">11:00 前</div><h4>抵達新山一機場 SGN</h4><p>7 人＋行李，建議安排 10–16 人座車。</p></div>
+      <div class="stop"><div class="time">12:30–13:30</div><h4>Piano Hotel 寄放行李／入住</h4><p>165/42 Nguyễn Thái Bình, District 1</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Piano+Hotel+165%2F42+Nguyen+Thai+Binh+Ho+Chi+Minh+City" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">13:45–14:45</div><h4>Bình Tây Market 平西市場</h4><p>順路往龍華寺方向，買水果、鮮花、糕餅、飲料與素食供品。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Binh%20Tay%20Market%2057A%20Thap%20Muoi%20Ho%20Chi%20Minh" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">15:00–16:30</div><h4>Chùa Long Hoa 龍華寺</h4><p>360A Đ. Bình Đông, Phú Định</p><a class="map" href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">16:30–18:00</div><h4>回飯店休息</h4><p>第一天搭機後先補充體力，避免長輩一路走到晚上。</p></div>
+      <div class="stop"><div class="time">18:30</div><h4>🍕 Pizza 4P’s Bến Thành</h4><p>必吃晚餐，7 人建議提前訂位。</p><a class="map" href="https://www.google.com/maps/place/Pizza+4P's+Ben+Thanh/@10.773361,106.6976173,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f7998588b7d:0x8f43f3d4a8472384!8m2!3d10.773361!4d106.6976173!16s%2Fg%2F11k1lbvf9v" target="_blank">📍 Google Maps</a></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <div class="day-num"><span>SEP</span><b>04</b></div>
+      <div><h3>龍華寺・錦麗河粉・歷史景點・新定區</h3><p>把同區餐廳排在一起，減少折返</p></div>
+    </div>
+    <div class="timeline">
+      <div class="stop"><div class="time">08:00</div><h4>飯店早餐</h4><p>先墊胃，不要吃太飽。</p></div>
+      <div class="stop"><div class="time">09:00–10:50</div><h4>龍華寺拜拜</h4><a class="map" href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">11:20–12:20</div><h4>🍜 錦麗河粉 / Phở Lệ</h4><p>從龍華寺回第一郡方向順路，適合作為正式午餐。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Phở+Lệ+413+415+Nguyễn+Trãi+Ho+Chi+Minh" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">13:00–15:30</div><h4>景點二選一</h4><p><b>天氣舒服：</b>統一宮 → 聖母院 → 中央郵局。<br><b>太熱／下雨：</b>戰爭遺跡博物館或 Saigon Centre 吹冷氣。</p>
+        <a class="map secondary" href="https://www.google.com/maps/search/?api=1&query=Independence%20Palace%20Ho%20Chi%20Minh%20City" target="_blank">統一宮</a>
+        <a class="map secondary" href="https://www.google.com/maps/search/?api=1&query=War%20Remnants%20Museum%20Ho%20Chi%20Minh%20City" target="_blank">戰爭遺跡博物館</a>
+      </div>
+      <div class="stop"><div class="time">16:00</div><h4>粉紅教堂・新定市場</h4><p>拍照、逛市場，接著吃同區小吃。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Tan%20Dinh%20Church%20Ho%20Chi%20Minh%20City" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">17:00</div><h4>🦀 Bánh Canh Cua 87</h4><p>建議 7 人點 3–4 碗分食，留肚子給晚餐。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Banh+Canh+Cua+87+Tran+Khac+Chan+Ho+Chi+Minh" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">18:30</div><h4>🥞 Bánh Xèo 46A</h4><p>第二天正式晚餐，主打越南煎餅與春捲。</p><a class="map" href="https://www.google.com/maps/place/B%C3%A1nh+X%C3%A8o+46A/@10.789525,106.6913887,17z/data=!4m15!1m8!3m7!1s0x31752f4df5510a3b:0x49001151a09b55ed!2zQsOhbmggWMOobyA0NkE!8m2!3d10.7895674!4d106.6913428!10e5!16s%2Fg%2F11j8tdnd3k" target="_blank">📍 Google Maps</a></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <div class="day-num"><span>SEP</span><b>05</b></div>
+      <div><h3>龍華寺・Gánh Chả・檳城市場・Sol</h3><p>最後一天集中第一郡，不再跨區</p></div>
+    </div>
+    <div class="timeline">
+      <div class="stop"><div class="time">08:00</div><h4>飯店早餐</h4></div>
+      <div class="stop"><div class="time">09:00–11:00</div><h4>龍華寺拜拜</h4><a class="map" href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">11:45–13:00</div><h4>🔥 Gánh Chả</h4><p>河內炭烤豬肉＋米線＋酸甜魚露，份量不會太沉重。</p><a class="map" href="https://www.google.com/maps/place/G%C3%A1nh+Ch%E1%BA%A3/@10.7726801,106.7036014,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f002ebc87d7:0xc54bb2637437e691!8m2!3d10.7726801!4d106.7036014!16s%2Fg%2F11vm0wlxm8" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">13:15–15:00</div><h4>回飯店午休</h4><p>把最熱的時段留給冷氣與休息。</p></div>
+      <div class="stop"><div class="time">15:15–17:15</div><h4>必去：檳城市場</h4><p>順便找 Sạp 1020 分食一碗在地米粉，採買伴手禮。</p><a class="map" href="https://www.google.com/maps/place/Ben+Thanh+Market,+L%C3%AA+Lai,+B%E1%BA%BFn+Th%C3%A0nh,+H%E1%BB%93+Ch%C3%AD+Minh,+%E8%B6%8A%E5%8D%97/@10.7724144,106.6956434,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f3f3150c389:0xae24bc58a48d9822!8m2!3d10.7724091!4d106.6982183!16s%2Fg%2F1pt_248r0" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">17:15–18:00</div><h4>Saigon Centre / Takashimaya</h4><p>吹冷氣、喝咖啡、上廁所，讓長輩休息。</p><a class="map secondary" href="https://www.google.com/maps/search/?api=1&query=Takashimaya%20Ho%20Chi%20Minh%20City%20Saigon%20Centre" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">18:30</div><h4>🥩 Sol Kitchen & Bar</h4><p>最後一晚正式餐，7 人務必先訂位。</p><a class="map" href="https://www.google.com/maps/place/Sol+Kitchen+%26+Bar/@10.774107,106.6971367,17z/data=!4m14!1m7!3m6!1s0x31752f94daff25f5:0x38b1ba93ebc8413d!2sSol+Kitchen+%26+Bar!8m2!3d10.774107!4d106.6971367!16s%2Fg%2F11hdpbpsh4" target="_blank">📍 Google Maps</a></div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-head">
+      <div class="day-num"><span>SEP</span><b>06</b></div>
+      <div><h3>回程</h3><p>07:00 班機，提早離開市區</p></div>
+    </div>
+    <div class="timeline">
+      <div class="stop"><div class="time">04:30–04:40</div><h4>Piano Hotel 出發</h4><p>目標 05:00–05:15 抵達 SGN，7 人辦理報到與安檢較需要時間。</p></div>
+      <div class="stop"><div class="time">07:00</div><h4>✈️ 離開胡志明市</h4></div>
+    </div>
+  </section>
+
+  <div class="section-title" id="food"><h2>餐廳與預算</h2><small>每人／每份約略值</small></div>
+  <div class="food-grid">
+
+    <article class="food">
+      <div class="food-top"><h3>Pizza 4P’s Bến Thành</h3><span class="badge must">必吃</span></div>
+      <p class="desc">窯烤披薩、自製起司、義大利麵。適合多人分食，半半披薩很方便一次吃兩種口味。</p>
+      <div class="price"><span>約 ₫250,000–450,000 / 人</span><span>約 NT$304–547</span></div>
+      <div class="addr">8 Thủ Khoa Huân, Bến Thành</div>
+      <a class="map" href="https://www.google.com/maps/place/Pizza+4P's+Ben+Thanh/@10.773361,106.6976173,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f7998588b7d:0x8f43f3d4a8472384!8m2!3d10.773361!4d106.6976173!16s%2Fg%2F11k1lbvf9v" target="_blank">📍 Google Maps</a>
+    </article>
+
+    <article class="food">
+      <div class="food-top"><h3>錦麗河粉 / Phở Lệ</h3><span class="badge">9/4 午餐</span></div>
+      <p class="desc">老牌南越牛肉河粉，湯頭較濃、牛肉份量足，適合想吃經典胡志明市河粉的人。</p>
+      <div class="price"><span>約 ₫90,000–120,000 / 碗</span><span>約 NT$109–146</span></div>
+      <div class="addr">413–415 Nguyễn Trãi, An Đông</div>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Phở+Lệ+413+415+Nguyễn+Trãi+Ho+Chi+Minh" target="_blank">📍 Google Maps</a>
+    </article>
+
+    <article class="food">
+      <div class="food-top"><h3>Bánh Canh Cua 87</h3><span class="badge">分食</span></div>
+      <p class="desc">蟹肉粗米粉／米苔目，常見配料有蟹肉、蝦、蟹肉丸、豬肉、鵪鶉蛋、豬血。</p>
+      <div class="price"><span>約 ₫30,000–55,000 / 碗</span><span>約 NT$36–67</span></div>
+      <div class="addr">87 Trần Khắc Chân, Tân Định</div>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Banh+Canh+Cua+87+Tran+Khac+Chan+Ho+Chi+Minh" target="_blank">📍 Google Maps</a>
+    </article>
+
+    <article class="food">
+      <div class="food-top"><h3>Bánh Xèo 46A</h3><span class="badge must">9/4 晚餐</span></div>
+      <p class="desc">越南煎餅、春捲、生菜香草與魚露沾醬。適合 7 人共享多點幾樣。</p>
+      <div class="price"><span>約 ₫80,000–180,000 / 人</span><span>約 NT$97–219</span></div>
+      <div class="addr">46A Đinh Công Tráng, Tân Định</div>
+      <a class="map" href="https://www.google.com/maps/place/B%C3%A1nh+X%C3%A8o+46A/@10.789525,106.6913887,17z/data=!4m15!1m8!3m7!1s0x31752f4df5510a3b:0x49001151a09b55ed!2zQsOhbmggWMOobyA0NkE!8m2!3d10.7895674!4d106.6913428!10e5!16s%2Fg%2F11j8tdnd3k" target="_blank">📍 Google Maps</a>
+    </article>
+
+    <article class="food">
+      <div class="food-top"><h3>Gánh Chả</h3><span class="badge">9/5 午餐</span></div>
+      <p class="desc">河內 Bún Chả：炭烤豬五花／肉餅，搭配米線、生菜香草與酸甜魚露。</p>
+      <div class="price"><span>約 ₫70,000–100,000 / 份</span><span>約 NT$85–122</span></div>
+      <div class="addr">90 Hồ Tùng Mậu, District 1</div>
+      <a class="map" href="https://www.google.com/maps/place/G%C3%A1nh+Ch%E1%BA%A3/@10.7726801,106.7036014,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f002ebc87d7:0xc54bb2637437e691!8m2!3d10.7726801!4d106.7036014!16s%2Fg%2F11vm0wlxm8" target="_blank">📍 Google Maps</a>
+    </article>
+
+    <article class="food">
+      <div class="food-top"><h3>檳城市場 Sạp 1020</h3><span class="badge">小吃</span></div>
+      <p class="desc">市場內在地米粉攤，建議把它當「嚐鮮」而不是正餐，7 人點 2–3 碗分食即可。</p>
+      <div class="price"><span>約 ₫50,000–80,000 / 碗</span><span>約 NT$61–97</span></div>
+      <div class="addr">Ben Thanh Market, Lê Lai</div>
+      <a class="map" href="https://www.google.com/maps/place/Ben+Thanh+Market,+L%C3%AA+Lai,+B%E1%BA%BFn+Th%C3%A0nh,+H%E1%BB%93+Ch%C3%AD+Minh,+%E8%B6%8A%E5%8D%97/@10.7724144,106.6956434,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f3f3150c389:0xae24bc58a48d9822!8m2!3d10.7724091!4d106.6982183!16s%2Fg%2F1pt_248r0" target="_blank">📍 Google Maps</a>
+    </article>
+
+    <article class="food">
+      <div class="food-top"><h3>Sol Kitchen & Bar</h3><span class="badge must">9/5 晚餐</span></div>
+      <p class="desc">偏高級的現代料理，主打炭烤和牛、海鮮、分享型主菜與西班牙海鮮燉飯。</p>
+      <div class="price">
+        <span>炭烤和牛約 ₫900,000 ≈ NT$1094</span>
+        <span>海鮮燉飯約 ₫480,000 ≈ NT$583</span>
+        <span>抓 ₫600,000–1,200,000 / 人 ≈ NT$729–1458</span>
+      </div>
+      <div class="addr">110–112 Lý Tự Trọng, Bến Thành</div>
+      <a class="map" href="https://www.google.com/maps/place/Sol+Kitchen+%26+Bar/@10.774107,106.6971367,17z/data=!4m14!1m7!3m6!1s0x31752f94daff25f5:0x38b1ba93ebc8413d!2sSol+Kitchen+%26+Bar!8m2!3d10.774107!4d106.6971367!16s%2Fg%2F11hdpbpsh4" target="_blank">📍 Google Maps</a>
+    </article>
+
+    <article class="food">
+      <div class="food-top"><h3>PHỞ SOL – Bến Thành</h3><span class="badge">備案</span></div>
+      <p class="desc">市中心方便的越南河粉店；臨時下雨、長輩不想跑遠或晚餐後又餓，都很好用。</p>
+      <div class="price"><span>約 ₫80,000–150,000 / 人</span><span>約 NT$97–182</span></div>
+      <div class="addr">32 Phạm Hồng Thái, Bến Thành</div>
+      <a class="map" href="https://www.google.com/maps/place/PH%E1%BB%9E+SOL+-+B%E1%BA%BEN+TH%C3%80NH/@10.7713867,106.6958445,17z/data=!4m14!1m7!3m6!1s0x31752f007b11235f:0xab46bd9663519ed!2zUEjhu54gU09MIC0gQuG6vk4gVEjDgE5I!8m2!3d10.7713867!4d106.6958445!16s%2Fg%2F11yf07dlyh" target="_blank">📍 Google Maps</a>
+    </article>
+
+    <article class="food">
+      <div class="food-top"><h3>Hủ Tiếu Nam Vang Duyên Quán</h3><span class="badge">備案</span></div>
+      <p class="desc">金邊粿條，可點乾麵；蝦、豬肉、豬肝、肉末、炸紅蔥酥是常見搭配。</p>
+      <div class="price"><span>約 ₫50,000–90,000 / 碗</span><span>約 NT$61–109</span></div>
+      <div class="addr">15L Nguyễn Thị Minh Khai, District 1</div>
+      <a class="map" href="https://www.google.com/maps/place/H%E1%BB%A7+ti%E1%BA%BFu+nam+vang+Duy%C3%AAn+Qu%C3%A1n/@10.7854949,106.70076,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f005f7a1811:0xe9bd750d920e1634!8m2!3d10.7854949!4d106.70076!16s%2Fg%2F11wtr_1b58" target="_blank">📍 Google Maps</a>
+    </article>
+  </div>
+
+  <div class="section-title" id="tips"><h2>長輩同行小提醒</h2><small>實用版</small></div>
+  <details open>
+    <summary>🚐 交通</summary>
+    <p>7 人加 2 位長輩，機場接送與每天往返龍華寺建議使用 10–16 人座車；市中心短程再用 2 台 Grab 分車。</p>
+  </details>
+  <details>
+    <summary>🌦️ 太熱／下雨怎麼換</summary>
+    <p>戶外景點可直接換成戰爭遺跡博物館、Saigon Centre / Takashimaya。中午 13:00–15:00 儘量避免長時間步行。</p>
+  </details>
+  <details>
+    <summary>🙏 素食供品</summary>
+    <p>第一天在平西市場先買水果、鮮花、糕餅與未開封素食供品。若需要「現煮全素」，請現場再確認是否使用魚露、蝦醬、豬油或蔥蒜等。</p>
+  </details>
+  <details>
+    <summary>💰 快速心算</summary>
+    <p>100,000 VND 約 NT$122；500,000 VND 約 NT$608；1,000,000 VND 約 NT$1215。</p>
+  </details>
+
+  <div class="tip"><b>訂位優先：</b>Pizza 4P’s 與 Sol Kitchen & Bar 都建議先訂 7 人桌。Sol 是最後一晚，建議把用餐時間固定在 18:30。</div>
+  <footer>Ho Chi Minh City · 2026/09/03–09/06 · Mobile Travel Guide</footer>
+</main>
+
+<nav class="bottom">
+  <div class="bottom-inner">
+    <a href="#itinerary"><b>🗓️</b>行程</a>
+    <a href="#food"><b>🍜</b>美食</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Piano+Hotel+165%2F42+Nguyen+Thai+Binh+Ho+Chi+Minh+City" target="_blank"><b>🏨</b>飯店</a>
+    <a href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank"><b>🙏</b>龍華寺</a>
+  </div>
+</nav>
+</body>
+</html>
