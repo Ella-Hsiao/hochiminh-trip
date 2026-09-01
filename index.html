@@ -65,12 +65,340 @@ details p{font-size:13px;color:#53606e;margin:8px 0 0}
 footer{text-align:center;color:#94a3b8;font-size:11px;padding:20px 0 6px}
 @media (min-width:640px){.food-grid{grid-template-columns:1fr 1fr} .hero h1{font-size:32px}}
 </style>
+
+<style id="theme-palette-style">
+:root{
+  --theme-bg:
+    radial-gradient(circle at 12% 8%, rgba(255,255,255,.82) 0 8%, transparent 30%),
+    radial-gradient(circle at 88% 18%, rgba(255,218,154,.28) 0 10%, transparent 34%),
+    linear-gradient(145deg,#eef9f6 0%,#f8fbf7 42%,#fff5df 100%);
+  --glass:rgba(255,255,255,.78);
+  --theme-ink:#17332e; --theme-muted:#667b75;
+  --theme-brand:#087c6b; --theme-brand2:#1a5c54;
+  --theme-line:rgba(55,105,92,.14);
+}
+html[data-theme="mint"]{
+  --theme-bg:
+    radial-gradient(circle at 8% 6%, rgba(181,243,224,.62), transparent 28%),
+    radial-gradient(circle at 94% 15%, rgba(255,224,164,.50), transparent 31%),
+    radial-gradient(circle at 78% 90%, rgba(181,224,255,.38), transparent 30%),
+    linear-gradient(140deg,#eefbf7 0%,#fffaf0 48%,#eef7ff 100%);
+  --glass:rgba(255,255,255,.78);--theme-ink:#17332e;--theme-muted:#667b75;
+  --theme-brand:#087c6b;--theme-brand2:#195f56;--theme-line:rgba(55,105,92,.14);
+}
+html[data-theme="sunset"]{
+  --theme-bg:
+    radial-gradient(circle at 10% 8%, rgba(255,194,167,.72), transparent 29%),
+    radial-gradient(circle at 90% 10%, rgba(255,227,154,.70), transparent 30%),
+    radial-gradient(circle at 70% 88%, rgba(246,185,214,.44), transparent 31%),
+    linear-gradient(145deg,#fff1e7 0%,#fff9e7 46%,#fbeaf3 100%);
+  --glass:rgba(255,252,248,.80);--theme-ink:#432c2b;--theme-muted:#806661;
+  --theme-brand:#d86b4a;--theme-brand2:#9c4964;--theme-line:rgba(148,76,68,.15);
+}
+html[data-theme="ocean"]{
+  --theme-bg:
+    radial-gradient(circle at 9% 8%, rgba(135,221,255,.58), transparent 29%),
+    radial-gradient(circle at 90% 15%, rgba(164,189,255,.48), transparent 31%),
+    radial-gradient(circle at 80% 92%, rgba(136,239,221,.38), transparent 29%),
+    linear-gradient(145deg,#eaf8ff 0%,#f2f4ff 48%,#eafff9 100%);
+  --glass:rgba(250,253,255,.79);--theme-ink:#1d3047;--theme-muted:#65758a;
+  --theme-brand:#247bbd;--theme-brand2:#3158a7;--theme-line:rgba(51,105,158,.15);
+}
+html[data-theme="lavender"]{
+  --theme-bg:
+    radial-gradient(circle at 10% 10%, rgba(210,187,255,.60), transparent 29%),
+    radial-gradient(circle at 90% 12%, rgba(255,197,225,.52), transparent 31%),
+    radial-gradient(circle at 72% 90%, rgba(192,231,255,.42), transparent 29%),
+    linear-gradient(145deg,#f4efff 0%,#fff3f8 48%,#eff8ff 100%);
+  --glass:rgba(255,252,255,.79);--theme-ink:#3d3048;--theme-muted:#7a6b83;
+  --theme-brand:#8661b8;--theme-brand2:#a64f82;--theme-line:rgba(118,82,145,.15);
+}
+html[data-theme="night"]{
+  --theme-bg:
+    radial-gradient(circle at 12% 8%, rgba(45,128,128,.34), transparent 30%),
+    radial-gradient(circle at 90% 12%, rgba(91,75,151,.36), transparent 32%),
+    radial-gradient(circle at 75% 92%, rgba(178,126,65,.20), transparent 28%),
+    linear-gradient(145deg,#101a1c 0%,#17182a 50%,#201b19 100%);
+  --glass:rgba(25,31,34,.78);--theme-ink:#f0f7f5;--theme-muted:#afbfbb;
+  --theme-brand:#62c9b4;--theme-brand2:#736abf;--theme-line:rgba(218,236,230,.12);
+}
+html,body{min-height:100%}
+html[data-theme] body{
+  background:var(--theme-bg)!important;
+  background-attachment:fixed!important;
+  color:var(--theme-ink)!important;
+  transition:background .45s ease,color .3s ease;
+}
+html[data-theme] body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(115deg,rgba(255,255,255,.08),transparent 40%,rgba(255,255,255,.10));
+}
+.theme-palette{position:fixed;right:14px;top:14px;z-index:100}
+.theme-palette-btn{
+  width:48px;height:48px;border:1px solid var(--theme-line);border-radius:16px;
+  background:var(--glass);box-shadow:0 12px 32px rgba(15,23,42,.16);
+  font-size:23px;cursor:pointer;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)
+}
+.theme-panel{
+  position:absolute;right:0;top:57px;width:244px;padding:14px;display:none;
+  background:var(--glass);border:1px solid var(--theme-line);border-radius:21px;
+  box-shadow:0 20px 50px rgba(15,23,42,.20);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  color:var(--theme-ink)
+}
+.theme-palette.open .theme-panel{display:block;animation:paletteIn .18s ease-out}
+@keyframes paletteIn{from{opacity:0;transform:translateY(-7px) scale(.98)}to{opacity:1;transform:none}}
+.theme-panel-title{font-weight:900;font-size:15px;margin:1px 2px 11px}
+.theme-options{display:grid;grid-template-columns:1fr;gap:7px}
+.theme-option{
+  display:flex;align-items:center;gap:10px;width:100%;border:1px solid var(--theme-line);
+  background:rgba(255,255,255,.48);color:var(--theme-ink);border-radius:14px;padding:9px 10px;
+  cursor:pointer;font-weight:850;text-align:left
+}
+html[data-theme="night"] .theme-option{background:rgba(255,255,255,.06)}
+.theme-option:hover{transform:translateY(-1px)}
+.theme-option.active{box-shadow:inset 0 0 0 2px var(--theme-brand)}
+.swatches{display:flex;width:62px;height:28px;border-radius:9px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}
+.swatches i{flex:1;height:28px!important;width:auto!important;border-radius:0!important}
+.theme-note{font-size:11px;color:var(--theme-muted);line-height:1.45;margin:10px 2px 0}
+
+/* Apply theme to the original first-version components without changing its layout */
+html[data-theme] .hero,html[data-theme] header.hero{
+  background:linear-gradient(135deg,var(--theme-brand),var(--theme-brand2))!important;
+  box-shadow:0 16px 40px color-mix(in srgb,var(--theme-brand) 18%,transparent)
+}
+html[data-theme] .day,html[data-theme] .food,html[data-theme] .card,
+html[data-theme] .place,html[data-theme] .restaurant-card,html[data-theme] .tip,
+html[data-theme] .note{
+  background:var(--glass)!important;border-color:var(--theme-line)!important;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)
+}
+html[data-theme] .day-title,html[data-theme] .dayhead,html[data-theme] .section-title,
+html[data-theme] .tag,html[data-theme] .chip{
+  background:color-mix(in srgb,var(--theme-brand) 9%,var(--glass))!important
+}
+html[data-theme] h1,html[data-theme] h2,html[data-theme] h3,html[data-theme] h4,
+html[data-theme] .title,html[data-theme] .time{color:var(--theme-ink)}
+html[data-theme] p,html[data-theme] small,html[data-theme] .muted,
+html[data-theme] .desc,html[data-theme] .addr{color:var(--theme-muted)}
+html[data-theme] a.map,html[data-theme] .map-btn,html[data-theme] .btn-primary{
+  background:linear-gradient(135deg,var(--theme-brand),var(--theme-brand2))!important;color:#fff!important
+}
+@media(max-width:480px){.theme-palette{right:10px;top:10px}.theme-panel{width:226px}}
+</style>
+
+
+<style id="theme-contrast-polish">
+/*
+  Theme-aware contrast system.
+  Each palette controls not only the background, but also the text hierarchy,
+  card surfaces, badges, timeline, footer and navigation for consistent legibility.
+*/
+html[data-theme="mint"]{
+  --card-text:#17352f; --card-muted:#526f68; --heading:#113b33;
+  --surface:rgba(255,255,255,.84); --surface-strong:rgba(255,255,255,.94);
+  --surface-soft:rgba(234,249,244,.86);
+  --notice-bg:rgba(255,248,226,.90); --notice-text:#614c1e; --notice-line:rgba(190,143,48,.25);
+  --badge-bg:#e2f8ee; --badge-text:#09634f;
+  --must-bg:#fff0f3; --must-text:#a92e50;
+  --price-bg:rgba(248,252,251,.92); --price-text:#334f48; --price-line:#d8e8e3;
+  --nav-bg:rgba(250,255,253,.90); --nav-text:#365a51;
+  --timeline-line:#b9d8d0; --timeline-halo:#cff7eb;
+}
+html[data-theme="sunset"]{
+  --card-text:#482d2b; --card-muted:#76584f; --heading:#582f2a;
+  --surface:rgba(255,251,247,.84); --surface-strong:rgba(255,253,250,.95);
+  --surface-soft:rgba(255,239,230,.88);
+  --notice-bg:rgba(255,244,217,.91); --notice-text:#6d4a1d; --notice-line:rgba(192,123,58,.26);
+  --badge-bg:#fff0dc; --badge-text:#9b4e2f;
+  --must-bg:#ffe9ef; --must-text:#aa3153;
+  --price-bg:rgba(255,249,244,.94); --price-text:#654a43; --price-line:#eed8cf;
+  --nav-bg:rgba(255,250,246,.91); --nav-text:#714b42;
+  --timeline-line:#e6beb2; --timeline-halo:#ffd9ce;
+}
+html[data-theme="ocean"]{
+  --card-text:#20364e; --card-muted:#557089; --heading:#183c5c;
+  --surface:rgba(250,254,255,.84); --surface-strong:rgba(255,255,255,.95);
+  --surface-soft:rgba(232,246,255,.89);
+  --notice-bg:rgba(244,250,255,.92); --notice-text:#31566f; --notice-line:rgba(61,129,172,.24);
+  --badge-bg:#e4f4ff; --badge-text:#1f6595;
+  --must-bg:#eef0ff; --must-text:#4e56a7;
+  --price-bg:rgba(247,252,255,.94); --price-text:#385b75; --price-line:#d6e6f1;
+  --nav-bg:rgba(246,252,255,.91); --nav-text:#365f7b;
+  --timeline-line:#b8d3e8; --timeline-halo:#d6efff;
+}
+html[data-theme="lavender"]{
+  --card-text:#45334f; --card-muted:#755f80; --heading:#533762;
+  --surface:rgba(255,252,255,.85); --surface-strong:rgba(255,254,255,.95);
+  --surface-soft:rgba(247,238,255,.89);
+  --notice-bg:rgba(255,244,250,.91); --notice-text:#684358; --notice-line:rgba(155,97,143,.24);
+  --badge-bg:#f1e7ff; --badge-text:#704a96;
+  --must-bg:#ffe9f2; --must-text:#a23f68;
+  --price-bg:rgba(253,249,255,.94); --price-text:#614e6a; --price-line:#e6d8eb;
+  --nav-bg:rgba(253,249,255,.91); --nav-text:#654f72;
+  --timeline-line:#d5c1df; --timeline-halo:#eadbff;
+}
+html[data-theme="night"]{
+  --card-text:#edf7f4; --card-muted:#b7c8c3; --heading:#f4fbf8;
+  --surface:rgba(25,33,35,.84); --surface-strong:rgba(27,36,38,.95);
+  --surface-soft:rgba(38,49,52,.90);
+  --notice-bg:rgba(69,57,36,.88); --notice-text:#f5deb0; --notice-line:rgba(232,195,117,.25);
+  --badge-bg:rgba(45,105,89,.55); --badge-text:#c5f5e7;
+  --must-bg:rgba(118,55,82,.55); --must-text:#ffd7e5;
+  --price-bg:rgba(35,47,49,.94); --price-text:#d5e6e1; --price-line:#405458;
+  --nav-bg:rgba(17,24,26,.92); --nav-text:#d4e5e0;
+  --timeline-line:#496261; --timeline-halo:rgba(88,204,179,.24);
+}
+
+/* Main text hierarchy */
+html[data-theme] main,
+html[data-theme] .day,
+html[data-theme] .food,
+html[data-theme] details{
+  color:var(--card-text)!important;
+}
+html[data-theme] .section-title h2,
+html[data-theme] .day-head h3,
+html[data-theme] .stop h4,
+html[data-theme] .food h3,
+html[data-theme] summary{
+  color:var(--heading)!important;
+}
+html[data-theme] .day-head p,
+html[data-theme] .stop p,
+html[data-theme] .food .desc,
+html[data-theme] details p,
+html[data-theme] .addr,
+html[data-theme] .section-title small,
+html[data-theme] footer{
+  color:var(--card-muted)!important;
+}
+
+/* Glass surfaces */
+html[data-theme] .day,
+html[data-theme] .food,
+html[data-theme] details{
+  background:var(--surface)!important;
+  border-color:var(--theme-line)!important;
+  box-shadow:0 10px 28px rgba(20,35,40,.07);
+}
+html[data-theme="night"] .day,
+html[data-theme="night"] .food,
+html[data-theme="night"] details{
+  box-shadow:0 12px 32px rgba(0,0,0,.23);
+}
+html[data-theme] .qbtn{
+  background:var(--surface-strong)!important;
+  color:var(--heading)!important;
+  border-color:var(--theme-line)!important;
+}
+html[data-theme] .notice{
+  background:var(--notice-bg)!important;
+  color:var(--notice-text)!important;
+  border-color:var(--notice-line)!important;
+}
+html[data-theme] .notice b{color:inherit!important}
+
+/* Day date block and timeline */
+html[data-theme] .day-num{
+  background:linear-gradient(145deg,var(--theme-brand),var(--theme-brand2))!important;
+  color:#fff!important;
+}
+html[data-theme] .day-num span,
+html[data-theme] .day-num b{color:#fff!important}
+html[data-theme] .time{color:var(--theme-brand)!important}
+html[data-theme] .stop:before{
+  background:var(--theme-brand)!important;
+  box-shadow:0 0 0 4px var(--timeline-halo)!important;
+}
+html[data-theme] .stop:after{background:var(--timeline-line)!important}
+
+/* Food labels / prices */
+html[data-theme] .badge{
+  background:var(--badge-bg)!important;
+  color:var(--badge-text)!important;
+}
+html[data-theme] .badge.must{
+  background:var(--must-bg)!important;
+  color:var(--must-text)!important;
+}
+html[data-theme] .price span{
+  background:var(--price-bg)!important;
+  color:var(--price-text)!important;
+  border-color:var(--price-line)!important;
+}
+
+/* Map buttons and tips */
+html[data-theme] .map{
+  background:linear-gradient(135deg,var(--theme-brand),var(--theme-brand2))!important;
+  color:#fff!important;
+  box-shadow:0 5px 14px color-mix(in srgb,var(--theme-brand) 20%,transparent);
+}
+html[data-theme] .map.secondary{
+  background:linear-gradient(135deg,#475569,#334155)!important;
+  color:#fff!important;
+}
+html[data-theme] .tip{
+  background:color-mix(in srgb,var(--theme-brand) 7%,var(--surface-strong))!important;
+  color:var(--card-text)!important;
+  border-left-color:var(--theme-brand)!important;
+}
+
+/* Fixed bottom navigation needs its own contrast treatment */
+html[data-theme] .bottom{
+  background:var(--nav-bg)!important;
+  border-top-color:var(--theme-line)!important;
+  box-shadow:0 -8px 24px rgba(20,35,40,.07);
+}
+html[data-theme] .bottom a{
+  color:var(--nav-text)!important;
+}
+html[data-theme] .bottom a:active{
+  background:color-mix(in srgb,var(--theme-brand) 12%,transparent)!important;
+}
+
+/* Hero stays intentionally light-on-dark for every palette */
+html[data-theme] .hero,
+html[data-theme] .hero h1,
+html[data-theme] .hero p,
+html[data-theme] .hero .eyebrow,
+html[data-theme] .hero .pill{
+  color:#fff!important;
+}
+html[data-theme] .hero .eyebrow{opacity:.86!important}
+html[data-theme] .hero p{opacity:.94!important}
+html[data-theme] .pill{
+  background:rgba(255,255,255,.15)!important;
+  border-color:rgba(255,255,255,.25)!important;
+}
+
+/* Palette itself always remains readable */
+html[data-theme] .theme-panel{color:var(--card-text)!important}
+html[data-theme] .theme-option{color:var(--card-text)!important}
+html[data-theme] .theme-note{color:var(--card-muted)!important}
+</style>
+
 </head>
 <body>
+<div class="theme-palette" id="themePalette">
+  <button class="theme-palette-btn" id="themePaletteBtn" aria-label="選擇背景風格" title="選擇背景風格">🎨</button>
+  <div class="theme-panel">
+    <div class="theme-panel-title">今天想看哪種風景？</div>
+    <div class="theme-options">
+      <button class="theme-option" data-theme-choice="mint"><span class="swatches"><i style="background:#9fe4cf"></i><i style="background:#fff0c7"></i><i style="background:#bde5ff"></i></span>薄荷晨光</button>
+      <button class="theme-option" data-theme-choice="sunset"><span class="swatches"><i style="background:#f6a687"></i><i style="background:#ffe19b"></i><i style="background:#efb8d2"></i></span>西貢夕陽</button>
+      <button class="theme-option" data-theme-choice="ocean"><span class="swatches"><i style="background:#79d3f5"></i><i style="background:#a7baff"></i><i style="background:#8de5d2"></i></span>海風藍調</button>
+      <button class="theme-option" data-theme-choice="lavender"><span class="swatches"><i style="background:#c7a9f5"></i><i style="background:#f5b8d5"></i><i style="background:#bce2fa"></i></span>薰衣草糖霜</button>
+      <button class="theme-option" data-theme-choice="night"><span class="swatches"><i style="background:#17383b"></i><i style="background:#4c467d"></i><i style="background:#8b6840"></i></span>西貢夜色</button>
+    </div>
+    <div class="theme-note">只改變這台裝置的觀看風格，不影響其他人的頁面。</div>
+  </div>
+</div>
+</div>
+
 <header class="hero">
   <div class="eyebrow">HO CHI MINH CITY · FAMILY FOOD TRIP</div>
   <h1>胡志明市 9/3–9/6<br>7 人家庭美食行程</h1>
-  <p>2 位長輩｜每天先拜龍華寺｜中午避暑｜餐廳與景點集中安排</p>
+  <p>7 人同行｜每天先拜龍華寺｜中午避暑｜餐廳與景點集中安排</p>
   <div class="pills">
     <span class="pill">✈️ 9/3 11:00 前抵達</span>
     <span class="pill">✈️ 9/6 07:00 起飛</span>
@@ -88,7 +416,7 @@ footer{text-align:center;color:#94a3b8;font-size:11px;padding:20px 0 6px}
     <a class="qbtn" href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank">🙏 龍華寺導航</a>
   </div>
 
-  <div class="section-title" id="itinerary"><h2>每日行程</h2><small>長輩友善版</small></div>
+  <div class="section-title" id="itinerary"><h2>每日行程</h2><small>舒適旅遊版</small></div>
 
   <section class="day">
     <div class="day-head">
@@ -100,15 +428,15 @@ footer{text-align:center;color:#94a3b8;font-size:11px;padding:20px 0 6px}
       <div class="stop"><div class="time">12:30–13:30</div><h4>Piano Hotel 寄放行李／入住</h4><p>165/42 Nguyễn Thái Bình, District 1</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Piano+Hotel+165%2F42+Nguyen+Thai+Binh+Ho+Chi+Minh+City" target="_blank">📍 Google Maps</a></div>
       <div class="stop"><div class="time">13:45–14:45</div><h4>Bình Tây Market 平西市場</h4><p>順路往龍華寺方向，買水果、鮮花、糕餅、飲料與素食供品。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Binh%20Tay%20Market%2057A%20Thap%20Muoi%20Ho%20Chi%20Minh" target="_blank">📍 Google Maps</a></div>
       <div class="stop"><div class="time">15:00–16:30</div><h4>Chùa Long Hoa 龍華寺</h4><p>360A Đ. Bình Đông, Phú Định</p><a class="map" href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank">📍 Google Maps</a></div>
-      <div class="stop"><div class="time">16:30–18:00</div><h4>回飯店休息</h4><p>第一天搭機後先補充體力，避免長輩一路走到晚上。</p></div>
-      <div class="stop"><div class="time">18:30</div><h4>🍕 Pizza 4P’s Bến Thành</h4><p>必吃晚餐，7 人建議提前訂位。</p><a class="map" href="https://www.google.com/maps/place/Pizza+4P's+Ben+Thanh/@10.773361,106.6976173,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f7998588b7d:0x8f43f3d4a8472384!8m2!3d10.773361!4d106.6976173!16s%2Fg%2F11k1lbvf9v" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">16:30–18:00</div><h4>回飯店休息</h4><p>第一天搭機後先補充體力，避免第一天行程一路排到太晚。</p></div>
+      <div class="stop"><div class="time">17:30</div><h4>🍕 Pizza 4P’s Bến Thành</h4><p>必吃晚餐，7 人建議提前訂位。</p><a class="map" href="https://www.google.com/maps/place/Pizza+4P's+Ben+Thanh/@10.773361,106.6976173,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f7998588b7d:0x8f43f3d4a8472384!8m2!3d10.773361!4d106.6976173!16s%2Fg%2F11k1lbvf9v" target="_blank">📍 Google Maps</a></div>
     </div>
   </section>
 
   <section class="day">
     <div class="day-head">
       <div class="day-num"><span>SEP</span><b>04</b></div>
-      <div><h3>龍華寺・錦麗河粉・歷史景點・新定區</h3><p>把同區餐廳排在一起，減少折返</p></div>
+      <div><h3>龍華寺・錦麗河粉・歷史景點・新定區・Cocotte</h3><p>下午不塞小吃，逛完新定區再回第一郡吃晚餐</p></div>
     </div>
     <div class="timeline">
       <div class="stop"><div class="time">08:00</div><h4>飯店早餐</h4><p>先墊胃，不要吃太飽。</p></div>
@@ -119,8 +447,7 @@ footer{text-align:center;color:#94a3b8;font-size:11px;padding:20px 0 6px}
         <a class="map secondary" href="https://www.google.com/maps/search/?api=1&query=War%20Remnants%20Museum%20Ho%20Chi%20Minh%20City" target="_blank">戰爭遺跡博物館</a>
       </div>
       <div class="stop"><div class="time">16:00</div><h4>粉紅教堂・新定市場</h4><p>拍照、逛市場，接著吃同區小吃。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Tan%20Dinh%20Church%20Ho%20Chi%20Minh%20City" target="_blank">📍 Google Maps</a></div>
-      <div class="stop"><div class="time">17:00</div><h4>🦀 Bánh Canh Cua 87</h4><p>建議 7 人點 3–4 碗分食，留肚子給晚餐。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Banh+Canh+Cua+87+Tran+Khac+Chan+Ho+Chi+Minh" target="_blank">📍 Google Maps</a></div>
-      <div class="stop"><div class="time">18:30</div><h4>🥞 Bánh Xèo 46A</h4><p>第二天正式晚餐，主打越南煎餅與春捲。</p><a class="map" href="https://www.google.com/maps/place/B%C3%A1nh+X%C3%A8o+46A/@10.789525,106.6913887,17z/data=!4m15!1m8!3m7!1s0x31752f4df5510a3b:0x49001151a09b55ed!2zQsOhbmggWMOobyA0NkE!8m2!3d10.7895674!4d106.6913428!10e5!16s%2Fg%2F11j8tdnd3k" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">18:00</div><h4>🇫🇷 Cocotte Bến Thành</h4><p>第二天正式晚餐。從新定區一路回到第一郡用餐，不需要再往外繞；法式 Bistro 適合多人一起點主菜分享。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Cocotte+Bến+Thành+136%2F11+Lê+Thánh+Tôn+Ho+Chi+Minh" target="_blank">📍 Google Maps</a></div>
     </div>
   </section>
 
@@ -135,8 +462,8 @@ footer{text-align:center;color:#94a3b8;font-size:11px;padding:20px 0 6px}
       <div class="stop"><div class="time">11:45–13:00</div><h4>🔥 Gánh Chả</h4><p>河內炭烤豬肉＋米線＋酸甜魚露，份量不會太沉重。</p><a class="map" href="https://www.google.com/maps/place/G%C3%A1nh+Ch%E1%BA%A3/@10.7726801,106.7036014,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f002ebc87d7:0xc54bb2637437e691!8m2!3d10.7726801!4d106.7036014!16s%2Fg%2F11vm0wlxm8" target="_blank">📍 Google Maps</a></div>
       <div class="stop"><div class="time">13:15–15:00</div><h4>回飯店午休</h4><p>把最熱的時段留給冷氣與休息。</p></div>
       <div class="stop"><div class="time">15:15–17:15</div><h4>必去：檳城市場</h4><p>順便找 Sạp 1020 分食一碗在地米粉，採買伴手禮。</p><a class="map" href="https://www.google.com/maps/place/Ben+Thanh+Market,+L%C3%AA+Lai,+B%E1%BA%BFn+Th%C3%A0nh,+H%E1%BB%93+Ch%C3%AD+Minh,+%E8%B6%8A%E5%8D%97/@10.7724144,106.6956434,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f3f3150c389:0xae24bc58a48d9822!8m2!3d10.7724091!4d106.6982183!16s%2Fg%2F1pt_248r0" target="_blank">📍 Google Maps</a></div>
-      <div class="stop"><div class="time">17:15–18:00</div><h4>Saigon Centre / Takashimaya</h4><p>吹冷氣、喝咖啡、上廁所，讓長輩休息。</p><a class="map secondary" href="https://www.google.com/maps/search/?api=1&query=Takashimaya%20Ho%20Chi%20Minh%20City%20Saigon%20Centre" target="_blank">📍 Google Maps</a></div>
-      <div class="stop"><div class="time">18:30</div><h4>🥩 Sol Kitchen & Bar</h4><p>最後一晚正式餐，7 人務必先訂位。</p><a class="map" href="https://www.google.com/maps/place/Sol+Kitchen+%26+Bar/@10.774107,106.6971367,17z/data=!4m14!1m7!3m6!1s0x31752f94daff25f5:0x38b1ba93ebc8413d!2sSol+Kitchen+%26+Bar!8m2!3d10.774107!4d106.6971367!16s%2Fg%2F11hdpbpsh4" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">17:15–18:00</div><h4>Saigon Centre / Takashimaya</h4><p>吹冷氣、喝咖啡、上廁所，安排休息時間。</p><a class="map secondary" href="https://www.google.com/maps/search/?api=1&query=Takashimaya%20Ho%20Chi%20Minh%20City%20Saigon%20Centre" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">17:30</div><h4>🥩 Sol Kitchen & Bar</h4><p>最後一晚正式餐，7 人務必先訂位。</p><a class="map" href="https://www.google.com/maps/place/Sol+Kitchen+%26+Bar/@10.774107,106.6971367,17z/data=!4m14!1m7!3m6!1s0x31752f94daff25f5:0x38b1ba93ebc8413d!2sSol+Kitchen+%26+Bar!8m2!3d10.774107!4d106.6971367!16s%2Fg%2F11hdpbpsh4" target="_blank">📍 Google Maps</a></div>
     </div>
   </section>
 
@@ -169,21 +496,12 @@ footer{text-align:center;color:#94a3b8;font-size:11px;padding:20px 0 6px}
       <div class="addr">413–415 Nguyễn Trãi, An Đông</div>
       <a class="map" href="https://www.google.com/maps/search/?api=1&query=Phở+Lệ+413+415+Nguyễn+Trãi+Ho+Chi+Minh" target="_blank">📍 Google Maps</a>
     </article>
-
-    <article class="food">
-      <div class="food-top"><h3>Bánh Canh Cua 87</h3><span class="badge">分食</span></div>
-      <p class="desc">蟹肉粗米粉／米苔目，常見配料有蟹肉、蝦、蟹肉丸、豬肉、鵪鶉蛋、豬血。</p>
-      <div class="price"><span>約 ₫30,000–55,000 / 碗</span><span>約 NT$36–67</span></div>
-      <div class="addr">87 Trần Khắc Chân, Tân Định</div>
-      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Banh+Canh+Cua+87+Tran+Khac+Chan+Ho+Chi+Minh" target="_blank">📍 Google Maps</a>
-    </article>
-
-    <article class="food">
-      <div class="food-top"><h3>Bánh Xèo 46A</h3><span class="badge must">9/4 晚餐</span></div>
-      <p class="desc">越南煎餅、春捲、生菜香草與魚露沾醬。適合 7 人共享多點幾樣。</p>
-      <div class="price"><span>約 ₫80,000–180,000 / 人</span><span>約 NT$97–219</span></div>
-      <div class="addr">46A Đinh Công Tráng, Tân Định</div>
-      <a class="map" href="https://www.google.com/maps/place/B%C3%A1nh+X%C3%A8o+46A/@10.789525,106.6913887,17z/data=!4m15!1m8!3m7!1s0x31752f4df5510a3b:0x49001151a09b55ed!2zQsOhbmggWMOobyA0NkE!8m2!3d10.7895674!4d106.6913428!10e5!16s%2Fg%2F11j8tdnd3k" target="_blank">📍 Google Maps</a>
+<article class="food">
+      <div class="food-top"><h3>Cocotte Bến Thành</h3><span class="badge must">9/4 晚餐</span></div>
+      <p class="desc">法式 Bistro，適合晚餐慢慢吃。可選紅酒燉牛肉、油封鴨等經典法式主菜；從新定區結束後回第一郡用餐，動線自然。</p>
+      <div class="price"><span>主菜約 ₫219,000–290,000 起</span><span>約 NT$266–353 起</span></div>
+      <div class="addr">136/11 Lê Thánh Tôn, Bến Thành</div>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Cocotte+Bến+Thành+136%2F11+Lê+Thánh+Tôn+Ho+Chi+Minh" target="_blank">📍 Google Maps</a>
     </article>
 
     <article class="food">
@@ -216,7 +534,7 @@ footer{text-align:center;color:#94a3b8;font-size:11px;padding:20px 0 6px}
 
     <article class="food">
       <div class="food-top"><h3>PHỞ SOL – Bến Thành</h3><span class="badge">備案</span></div>
-      <p class="desc">市中心方便的越南河粉店；臨時下雨、長輩不想跑遠或晚餐後又餓，都很好用。</p>
+      <p class="desc">市中心方便的越南河粉店；臨時下雨、如果不想跑遠或晚餐後又餓，都很好用。</p>
       <div class="price"><span>約 ₫80,000–150,000 / 人</span><span>約 NT$97–182</span></div>
       <div class="addr">32 Phạm Hồng Thái, Bến Thành</div>
       <a class="map" href="https://www.google.com/maps/place/PH%E1%BB%9E+SOL+-+B%E1%BA%BEN+TH%C3%80NH/@10.7713867,106.6958445,17z/data=!4m14!1m7!3m6!1s0x31752f007b11235f:0xab46bd9663519ed!2zUEjhu54gU09MIC0gQuG6vk4gVEjDgE5I!8m2!3d10.7713867!4d106.6958445!16s%2Fg%2F11yf07dlyh" target="_blank">📍 Google Maps</a>
@@ -231,10 +549,10 @@ footer{text-align:center;color:#94a3b8;font-size:11px;padding:20px 0 6px}
     </article>
   </div>
 
-  <div class="section-title" id="tips"><h2>長輩同行小提醒</h2><small>實用版</small></div>
+  <div class="section-title" id="tips"><h2>旅遊小提醒</h2><small>實用版</small></div>
   <details open>
     <summary>🚐 交通</summary>
-    <p>7 人加 2 位長輩，機場接送與每天往返龍華寺建議使用 10–16 人座車；市中心短程再用 2 台 Grab 分車。</p>
+    <p>7 人加 2 位同行旅客，機場接送與每天往返龍華寺建議使用 10–16 人座車；市中心短程再用 2 台 Grab 分車。</p>
   </details>
   <details>
     <summary>🌦️ 太熱／下雨怎麼換</summary>
@@ -261,5 +579,38 @@ footer{text-align:center;color:#94a3b8;font-size:11px;padding:20px 0 6px}
     <a href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank"><b>🙏</b>龍華寺</a>
   </div>
 </nav>
+
+<script>
+(function(){
+  const KEY='hcm_trip_view_theme';
+  const root=document.documentElement;
+  const box=document.getElementById('themePalette');
+  const btn=document.getElementById('themePaletteBtn');
+  const choices=[...document.querySelectorAll('[data-theme-choice]')];
+
+  function apply(theme){
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem(KEY, theme);
+    choices.forEach(x=>x.classList.toggle('active', x.dataset.themeChoice===theme));
+  }
+
+  apply(localStorage.getItem(KEY)||'mint');
+
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    box.classList.toggle('open');
+  });
+
+  choices.forEach(x=>x.addEventListener('click', function(){
+    apply(this.dataset.themeChoice);
+    box.classList.remove('open');
+  }));
+
+  document.addEventListener('click', e=>{
+    if(!box.contains(e.target)) box.classList.remove('open');
+  });
+})();
+</script>
+
 </body>
 </html>
