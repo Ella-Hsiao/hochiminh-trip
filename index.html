@@ -59,7 +59,7 @@ summary{font-weight:800;cursor:pointer}
 details p{font-size:13px;color:#53606e;margin:8px 0 0}
 .tip{border-left:4px solid var(--accent);background:#fffbeb;border-radius:12px;padding:10px 12px;font-size:13px;margin-top:10px}
 .bottom{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:8px max(10px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));z-index:20}
-.bottom-inner{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.bottom-inner{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 .bottom a{text-decoration:none;text-align:center;font-size:11px;color:#475569;padding:7px 4px;border-radius:10px}
 .bottom b{display:block;font-size:18px;line-height:1.1}
 footer{text-align:center;color:#94a3b8;font-size:11px;padding:20px 0 6px}
@@ -377,7 +377,22 @@ html[data-theme] .theme-option{color:var(--card-text)!important}
 html[data-theme] .theme-note{color:var(--card-muted)!important}
 </style>
 
-</head>
+<style id="navfix-v6">
+.bottom{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:4px}
+.bottom a{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;min-width:0!important;padding:7px 2px!important;text-decoration:none!important}
+.bottom a span{display:block!important;font-size:18px!important}.bottom a b{display:block!important;font-size:11px!important;color:inherit!important;white-space:nowrap!important}
+</style>
+<style id="route-info-v7">
+.route-next{
+  margin:10px 0 2px;padding:9px 11px;border-radius:12px;
+  background:color-mix(in srgb,var(--theme-brand) 7%,var(--surface-strong));
+  border:1px solid var(--theme-line);
+  color:var(--card-text);font-size:12px;font-weight:750;line-height:1.55;
+}
+.route-next .km{color:var(--theme-brand);font-weight:900}
+.route-next .fare{font-weight:900}
+.route-next .walk{color:var(--card-muted);font-weight:800}
+</style></head>
 <body>
 <div class="theme-palette" id="themePalette">
   <button class="theme-palette-btn" id="themePaletteBtn" aria-label="選擇背景風格" title="選擇背景風格">🎨</button>
@@ -424,11 +439,11 @@ html[data-theme] .theme-note{color:var(--card-muted)!important}
       <div><h3>抵達・買供品・龍華寺・Pizza</h3><p>第一天不要塞太滿，保留午休與交通彈性</p></div>
     </div>
     <div class="timeline">
-      <div class="stop"><div class="time">11:00 前</div><h4>抵達新山一機場 SGN</h4><p>7 人＋行李，建議安排 10–16 人座車。</p></div>
-      <div class="stop"><div class="time">12:30–13:30</div><h4>Piano Hotel 寄放行李／入住</h4><p>165/42 Nguyễn Thái Bình, District 1</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Piano+Hotel+165%2F42+Nguyen+Thai+Binh+Ho+Chi+Minh+City" target="_blank">📍 Google Maps</a></div>
-      <div class="stop"><div class="time">13:45–14:45</div><h4>Bình Tây Market 平西市場</h4><p>順路往龍華寺方向，買水果、鮮花、糕餅、飲料與素食供品。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Binh%20Tay%20Market%2057A%20Thap%20Muoi%20Ho%20Chi%20Minh" target="_blank">📍 Google Maps</a></div>
-      <div class="stop"><div class="time">15:00–16:30</div><h4>Chùa Long Hoa 龍華寺</h4><p>360A Đ. Bình Đông, Phú Định</p><a class="map" href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank">📍 Google Maps</a></div>
-      <div class="stop"><div class="time">16:30–18:00</div><h4>回飯店休息</h4><p>第一天搭機後先補充體力，避免第一天行程一路排到太晚。</p></div>
+      <div class="stop"><div class="time">11:00 前</div><h4>抵達新山一機場 SGN</h4><p>7 人＋行李，建議安排 10–16 人座車。</p><div class="route-next">🚕 下一站：<b>Piano Hotel</b>　<span class="km">約 8 km</span><br><span class="fare">兩台 Grab 預估 ₫180,000–260,000</span> <span class="walk">（約 NT$219–316）</span></div></div>
+      <div class="stop"><div class="time">12:30–13:30</div><h4>Piano Hotel 寄放行李／入住</h4><p>165/42 Nguyễn Thái Bình, District 1</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Piano+Hotel+165%2F42+Nguyen+Thai+Binh+Ho+Chi+Minh+City" target="_blank">📍 Google Maps</a><div class="route-next">🚕 下一站：<b>Bình Tây Market</b>　<span class="km">約 5.5 km</span><br><span class="fare">兩台 Grab 預估 ₫140,000–200,000</span> <span class="walk">（約 NT$170–243）</span></div></div>
+      <div class="stop"><div class="time">13:45–14:45</div><h4>Bình Tây Market 平西市場</h4><p>順路往龍華寺方向，買水果、鮮花、糕餅、飲料與素食供品。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Binh%20Tay%20Market%2057A%20Thap%20Muoi%20Ho%20Chi%20Minh" target="_blank">📍 Google Maps</a><div class="route-next">🚕 下一站：<b>龍華寺</b>　<span class="km">約 4 km</span><br><span class="fare">兩台 Grab 預估 ₫110,000–160,000</span> <span class="walk">（約 NT$134–194）</span></div></div>
+      <div class="stop"><div class="time">15:00–16:30</div><h4>Chùa Long Hoa 龍華寺</h4><p>360A Đ. Bình Đông, Phú Định</p><a class="map" href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank">📍 Google Maps</a><div class="route-next">🚕 下一站：<b>Piano Hotel</b>　<span class="km">約 8 km</span><br><span class="fare">兩台 Grab 預估 ₫180,000–250,000</span> <span class="walk">（約 NT$219–304）</span></div></div>
+      <div class="stop"><div class="time">16:30–18:00</div><h4>回飯店休息</h4><p>第一天搭機後先補充體力，避免第一天行程一路排到太晚。</p><div class="route-next">🚶 / 🚕 下一站：<b>Pizza 4P’s Bến Thành</b>　<span class="km">約 1.0 km</span><br><span class="fare">兩台 Grab 預估 ₫55,000–80,000</span> <span class="walk">（約 NT$67–97）</span></div></div>
       <div class="stop"><div class="time">17:30</div><h4>🍕 Pizza 4P’s Bến Thành</h4><p>必吃晚餐，7 人建議提前訂位。</p><a class="map" href="https://www.google.com/maps/place/Pizza+4P's+Ben+Thanh/@10.773361,106.6976173,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f7998588b7d:0x8f43f3d4a8472384!8m2!3d10.773361!4d106.6976173!16s%2Fg%2F11k1lbvf9v" target="_blank">📍 Google Maps</a></div>
     </div>
   </section>
@@ -439,14 +454,14 @@ html[data-theme] .theme-note{color:var(--card-muted)!important}
       <div><h3>龍華寺・錦麗河粉・歷史景點・新定區・Cocotte</h3><p>下午不塞小吃，逛完新定區再回第一郡吃晚餐</p></div>
     </div>
     <div class="timeline">
-      <div class="stop"><div class="time">08:00</div><h4>飯店早餐</h4><p>先墊胃，不要吃太飽。</p></div>
-      <div class="stop"><div class="time">09:00–10:50</div><h4>龍華寺拜拜</h4><a class="map" href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank">📍 Google Maps</a></div>
-      <div class="stop"><div class="time">11:20–12:20</div><h4>🍜 錦麗河粉 / Phở Lệ</h4><p>從龍華寺回第一郡方向順路，適合作為正式午餐。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Phở+Lệ+413+415+Nguyễn+Trãi+Ho+Chi+Minh" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">08:00</div><h4>飯店早餐</h4><p>先墊胃，不要吃太飽。</p><div class="route-next">🚕 下一站：<b>龍華寺</b>　<span class="km">約 8 km</span><br><span class="fare">兩台 Grab 預估 ₫180,000–250,000</span> <span class="walk">（約 NT$219–304）</span></div></div>
+      <div class="stop"><div class="time">09:00–10:50</div><h4>龍華寺拜拜</h4><a class="map" href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank">📍 Google Maps</a><div class="route-next">🚕 下一站：<b>Phở Lệ</b>　<span class="km">約 5–6 km</span><br><span class="fare">兩台 Grab 預估 ₫140,000–200,000</span> <span class="walk">（約 NT$170–243）</span></div></div>
+      <div class="stop"><div class="time">11:20–12:20</div><h4>🍜 錦麗河粉 / Phở Lệ</h4><p>從龍華寺回第一郡方向順路，適合作為正式午餐。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Phở+Lệ+413+415+Nguyễn+Trãi+Ho+Chi+Minh" target="_blank">📍 Google Maps</a><div class="route-next">🚕 下一站：<b>市中心景點</b>　<span class="km">約 3 km</span><br><span class="fare">兩台 Grab 預估 ₫90,000–130,000</span> <span class="walk">（約 NT$109–158）</span></div></div>
       <div class="stop"><div class="time">13:00–15:30</div><h4>景點二選一</h4><p><b>天氣舒服：</b>統一宮 → 聖母院 → 中央郵局。<br><b>太熱／下雨：</b>戰爭遺跡博物館或 Saigon Centre 吹冷氣。</p>
         <a class="map secondary" href="https://www.google.com/maps/search/?api=1&query=Independence%20Palace%20Ho%20Chi%20Minh%20City" target="_blank">統一宮</a>
         <a class="map secondary" href="https://www.google.com/maps/search/?api=1&query=War%20Remnants%20Museum%20Ho%20Chi%20Minh%20City" target="_blank">戰爭遺跡博物館</a>
-      </div>
-      <div class="stop"><div class="time">16:00</div><h4>粉紅教堂・新定市場</h4><p>拍照、逛市場，接著吃同區小吃。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Tan%20Dinh%20Church%20Ho%20Chi%20Minh%20City" target="_blank">📍 Google Maps</a></div>
+      <div class="route-next">🚕 下一站：<b>粉紅教堂／新定區</b>　<span class="km">約 2–3 km</span><br><span class="fare">兩台 Grab 預估 ₫80,000–120,000</span> <span class="walk">（約 NT$97–146）</span></div></div>
+      <div class="stop"><div class="time">16:00</div><h4>粉紅教堂・新定市場</h4><p>拍照、逛市場，接著吃同區小吃。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Tan%20Dinh%20Church%20Ho%20Chi%20Minh%20City" target="_blank">📍 Google Maps</a><div class="route-next">🚕 下一站：<b>Cocotte Bến Thành</b>　<span class="km">約 2.5 km</span><br><span class="fare">兩台 Grab 預估 ₫80,000–120,000</span> <span class="walk">（約 NT$97–146）</span></div></div>
       <div class="stop"><div class="time">18:00</div><h4>🇫🇷 Cocotte Bến Thành</h4><p>第二天正式晚餐。從新定區一路回到第一郡用餐，不需要再往外繞；法式 Bistro 適合多人一起點主菜分享。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Cocotte+Bến+Thành+136%2F11+Lê+Thánh+Tôn+Ho+Chi+Minh" target="_blank">📍 Google Maps</a></div>
     </div>
   </section>
@@ -457,11 +472,11 @@ html[data-theme] .theme-note{color:var(--card-muted)!important}
       <div><h3>龍華寺・Gánh Chả・檳城市場・Sol</h3><p>最後一天集中第一郡，不再跨區</p></div>
     </div>
     <div class="timeline">
-      <div class="stop"><div class="time">08:00</div><h4>飯店早餐</h4></div>
-      <div class="stop"><div class="time">09:00–11:00</div><h4>龍華寺拜拜</h4><a class="map" href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank">📍 Google Maps</a></div>
-      <div class="stop"><div class="time">11:45–13:00</div><h4>🔥 Gánh Chả</h4><p>河內炭烤豬肉＋米線＋酸甜魚露，份量不會太沉重。</p><a class="map" href="https://www.google.com/maps/place/G%C3%A1nh+Ch%E1%BA%A3/@10.7726801,106.7036014,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f002ebc87d7:0xc54bb2637437e691!8m2!3d10.7726801!4d106.7036014!16s%2Fg%2F11vm0wlxm8" target="_blank">📍 Google Maps</a></div>
-      <div class="stop"><div class="time">13:15–15:00</div><h4>回飯店午休</h4><p>把最熱的時段留給冷氣與休息。</p></div>
-      <div class="stop"><div class="time">15:15–17:15</div><h4>必去：檳城市場</h4><p>順便找 Sạp 1020 分食一碗在地米粉，採買伴手禮。</p><a class="map" href="https://www.google.com/maps/place/Ben+Thanh+Market,+L%C3%AA+Lai,+B%E1%BA%BFn+Th%C3%A0nh,+H%E1%BB%93+Ch%C3%AD+Minh,+%E8%B6%8A%E5%8D%97/@10.7724144,106.6956434,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f3f3150c389:0xae24bc58a48d9822!8m2!3d10.7724091!4d106.6982183!16s%2Fg%2F1pt_248r0" target="_blank">📍 Google Maps</a></div>
+      <div class="stop"><div class="time">08:00</div><h4>飯店早餐</h4><div class="route-next">🚕 下一站：<b>龍華寺</b>　<span class="km">約 8 km</span><br><span class="fare">兩台 Grab 預估 ₫180,000–250,000</span> <span class="walk">（約 NT$219–304）</span></div></div>
+      <div class="stop"><div class="time">09:00–11:00</div><h4>龍華寺拜拜</h4><a class="map" href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank">📍 Google Maps</a><div class="route-next">🚕 下一站：<b>Gánh Chả</b>　<span class="km">約 8–9 km</span><br><span class="fare">兩台 Grab 預估 ₫190,000–270,000</span> <span class="walk">（約 NT$231–328）</span></div></div>
+      <div class="stop"><div class="time">11:45–13:00</div><h4>🔥 Gánh Chả</h4><p>河內炭烤豬肉＋米線＋酸甜魚露，份量不會太沉重。</p><a class="map" href="https://www.google.com/maps/place/G%C3%A1nh+Ch%E1%BA%A3/@10.7726801,106.7036014,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f002ebc87d7:0xc54bb2637437e691!8m2!3d10.7726801!4d106.7036014!16s%2Fg%2F11vm0wlxm8" target="_blank">📍 Google Maps</a><div class="route-next">🚶 / 🚕 下一站：<b>Piano Hotel</b>　<span class="km">約 1 km</span><br><span class="fare">兩台 Grab 預估 ₫55,000–80,000</span> <span class="walk">（約 NT$67–97）</span></div></div>
+      <div class="stop"><div class="time">13:15–15:00</div><h4>回飯店午休</h4><p>把最熱的時段留給冷氣與休息。</p><div class="route-next">🚶 下一站：<b>檳城市場</b>　<span class="km">約 0.7 km</span><br><span class="fare">兩台 Grab 預估 步行最方便；若叫車兩台約 ₫55,000–75,000</span> <span class="walk">（約 NT$67–91）</span></div></div>
+      <div class="stop"><div class="time">15:15–17:15</div><h4>必去：檳城市場</h4><p>順便找 Sạp 1020 分食一碗在地米粉，採買伴手禮。</p><a class="map" href="https://www.google.com/maps/place/Ben+Thanh+Market,+L%C3%AA+Lai,+B%E1%BA%BFn+Th%C3%A0nh,+H%E1%BB%93+Ch%C3%AD+Minh,+%E8%B6%8A%E5%8D%97/@10.7724144,106.6956434,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f3f3150c389:0xae24bc58a48d9822!8m2!3d10.7724091!4d106.6982183!16s%2Fg%2F1pt_248r0" target="_blank">📍 Google Maps</a><div class="route-next">🚶 下一站：<b>Cà phê Linh</b>　<span class="km">約 0.3 km</span><br><span class="fare">兩台 Grab 預估 建議步行</span></div></div>
       <div class="stop"><div class="time">17:15–18:00</div><h4>Saigon Centre / Takashimaya</h4><p>吹冷氣、喝咖啡、上廁所，安排休息時間。</p><a class="map secondary" href="https://www.google.com/maps/search/?api=1&query=Takashimaya%20Ho%20Chi%20Minh%20City%20Saigon%20Centre" target="_blank">📍 Google Maps</a></div>
       <div class="stop"><div class="time">17:30</div><h4>🥩 Sol Kitchen & Bar</h4><p>最後一晚正式餐，7 人務必先訂位。</p><a class="map" href="https://www.google.com/maps/place/Sol+Kitchen+%26+Bar/@10.774107,106.6971367,17z/data=!4m14!1m7!3m6!1s0x31752f94daff25f5:0x38b1ba93ebc8413d!2sSol+Kitchen+%26+Bar!8m2!3d10.774107!4d106.6971367!16s%2Fg%2F11hdpbpsh4" target="_blank">📍 Google Maps</a></div>
     </div>
@@ -473,7 +488,7 @@ html[data-theme] .theme-note{color:var(--card-muted)!important}
       <div><h3>回程</h3><p>07:00 班機，提早離開市區</p></div>
     </div>
     <div class="timeline">
-      <div class="stop"><div class="time">04:30–04:40</div><h4>Piano Hotel 出發</h4><p>目標 05:00–05:15 抵達 SGN，7 人辦理報到與安檢較需要時間。</p></div>
+      <div class="stop"><div class="time">04:30–04:40</div><h4>Piano Hotel 出發</h4><p>目標 05:00–05:15 抵達 SGN，7 人辦理報到與安檢較需要時間。</p><div class="route-next">🚕 下一站：<b>新山一機場 SGN</b>　<span class="km">約 8 km</span><br><span class="fare">兩台 Grab 預估 ₫190,000–280,000</span> <span class="walk">（約 NT$231–340）</span></div></div>
       <div class="stop"><div class="time">07:00</div><h4>✈️ 離開胡志明市</h4></div>
     </div>
   </section>
@@ -521,7 +536,7 @@ html[data-theme] .theme-note{color:var(--card-muted)!important}
     </article>
 
     <article class="food">
-      <div class="food-top"><h3>Sol Kitchen & Bar</h3><span class="badge must">9/5 晚餐</span></div>
+      <div class="food-top"><h3>Sol Kitchen & Bar</h3><span class="badge must">9/5 晚餐</span></div><div class="stop"><div class="time">16:20–16:55</div><h4>☕ OPTIONAL｜Cà phê Linh</h4><p>就在 Bến Thành 核心區。逛市場後若需要休息可短停，再前往 17:30 Sol；時間不足就略過。</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Ca+phe+Linh+1+Truong+Dinh+Ben+Thanh+Ho+Chi+Minh" target="_blank">📍 Google Maps</a></div>
       <p class="desc">偏高級的現代料理，主打炭烤和牛、海鮮、分享型主菜與西班牙海鮮燉飯。</p>
       <div class="price">
         <span>炭烤和牛約 ₫900,000 ≈ NT$1094</span>
@@ -567,17 +582,42 @@ html[data-theme] .theme-note{color:var(--card-muted)!important}
     <p>100,000 VND 約 NT$122；500,000 VND 約 NT$608；1,000,000 VND 約 NT$1215。</p>
   </details>
 
-  <div class="tip"><b>訂位優先：</b>Pizza 4P’s 與 Sol Kitchen & Bar 都建議先訂 7 人桌。Sol 是最後一晚，建議把用餐時間固定在 18:30。</div>
-  <footer>Ho Chi Minh City · 2026/09/03–09/06 · Mobile Travel Guide</footer>
+  <div class="tip"><b>訂位優先：</b>Pizza 4P’s 與 Sol Kitchen & Bar 都建議先訂 7 人桌。Sol 是最後一晚，建議把用餐時間固定在 18:30。<div class="route-next">🚶 下一站：<b>Sol Kitchen & Bar</b>　<span class="km">約 0.7 km</span><br><span class="fare">兩台 Grab 預估 建議步行；兩台 Grab 約 ₫55,000–75,000</span> <span class="walk">（約 NT$67–91）</span></div></div>
+  <section id="backup">
+<div class="section-title"><div><h2>🧭 備案｜餐廳・咖啡廳</h2><p>主行程臨時想換口味、遇到客滿或想多休息時，可直接從這裡挑。星等為目前查到的 Google 評分；評價會隨時間變動。</p></div></div>
+<div class="food-grid">
+
+<article class="food"><div class="food-top"><h3>☕ Là Lá Bakeshop & Coffee</h3><span class="badge must">⭐ 4.7｜9/4 已排</span></div><p class="desc">第三郡，市中心往新定區途中順路；甜點、烘焙、咖啡都有。</p><div class="addr">10 Lê Ngô Cát, Xuân Hòa</div><a class="map" href="https://www.google.com/maps/search/?api=1&query=La+La+Bakeshop+Coffee+10+Le+Ngo+Cat+Ho+Chi+Minh" target="_blank">📍 Google Maps</a></article>
+
+<article class="food"><div class="food-top"><h3>☕ Cà phê Linh</h3><span class="badge must">⭐ 4.5｜9/5 已排</span></div><p class="desc">檳城市場旁，第三天下午最方便的短休息點。</p><div class="addr">1 Trương Định, Bến Thành</div><a class="map" href="https://maps.google.com/?q=1+Truong+Dinh+Ben+Thanh+Ho+Chi+Minh" target="_blank">📍 Google Maps</a></article>
+
+<article class="food"><div class="food-top"><h3>☕ Tonkin Specialty Coffee</h3><span class="badge">⭐ 4.8｜9/5 替代</span></div><p class="desc">靠近 Sol，蛋咖啡與越南特色咖啡很熱門；Cà phê Linh 客滿可換這間。</p><div class="addr">91 Lý Tự Trọng, Bến Thành</div><a class="map" href="https://maps.google.com/?q=Tonkin+Specialty+Coffee+91+Ly+Tu+Trong" target="_blank">📍 Google Maps</a></article>
+
+<article class="food"><div class="food-top"><h3>☕ Dabao Concept - Cố Đô</h3><span class="badge">⭐ 4.1｜9/4 替代</span></div><p class="desc">第三郡的設計感咖啡廳，可替換 Là Lá；不建議同一天兩間都跑。</p><div class="addr">18 Tú Xương, Xuân Hòa</div><a class="map" href="https://maps.google.com/?q=Dabao+Concept+Co+Do+18+Tu+Xuong" target="_blank">📍 Google Maps</a></article>
+
+<article class="food"><div class="food-top"><h3>☕ Little HaNoi Egg Coffee</h3><span class="badge">⭐ 4.9｜9/3 備案</span></div><p class="desc">主打蛋咖啡。第一天回第一郡後若還有時間可去，不需要為它改動主線。</p><div class="addr">119/5 Yersin, District 1</div><a class="map" href="https://maps.google.com/?q=Little+HaNoi+Egg+Coffee+119%2F5+Yersin" target="_blank">📍 Google Maps</a></article>
+
+<article class="food"><div class="food-top"><h3>🍜 PHỞ SOL - BẾN THÀNH</h3><span class="badge">⭐ 4.8｜用餐備案</span></div><p class="desc">Bến Thành 核心區的河粉餐廳，營業時間長，臨時需要正餐很方便。</p><div class="addr">32 Phạm Hồng Thái, Bến Thành</div><a class="map" href="https://maps.google.com/?q=PHO+SOL+BEN+THANH+32+Pham+Hong+Thai" target="_blank">📍 Google Maps</a></article>
+
+<article class="food"><div class="food-top"><h3>🍜 Hủ Tiếu Nam Vang Duyên Quán</h3><span class="badge">⭐ 4.6｜第一郡備案</span></div><p class="desc">南旺粿條／乾麵類，位於第一郡北側；想把正餐換成在地小吃時可選。</p><div class="addr">15L Nguyễn Thị Minh Khai, Bến Nghé</div><a class="map" href="https://maps.google.com/?q=Hu+Tieu+Nam+Vang+Duyen+Quan+15L+Nguyen+Thi+Minh+Khai" target="_blank">📍 Google Maps</a></article>
+
+<article class="food"><div class="food-top"><h3>🍽️ Mặn Mòi - Thảo Điền</h3><span class="badge">⭐ 4.5｜較遠</span></div><p class="desc">越南家常料理，環境與用餐感受較完整，但在 Thảo Điền，與目前每日龍華寺主線相反；真的想換餐廳再專程去。</p><div class="addr">32 Đường Số 11, Thảo Điền</div><a class="map" href="https://maps.google.com/?q=Man+Moi+Thao+Dien+32+Duong+So+11" target="_blank">📍 Google Maps</a></article>
+
+<article class="food"><div class="food-top"><h3>🥖 Bánh mì chấm Hung Tubes</h3><span class="badge">⭐ 3.7｜備案</span></div><p class="desc">越式沾醬麵包類，適合想換成比較輕鬆的小吃。位置在第三郡一帶。</p><div class="addr">284 Nam Kỳ Khởi Nghĩa, Xuân Hòa</div><a class="map" href="https://maps.google.com/?q=Banh+mi+cham+Hung+Tubes+284+Nam+Ky+Khoi+Nghia" target="_blank">📍 Google Maps</a></article>
+
+<article class="food"><div class="food-top"><h3>🥖 Bánh mì heo quay - Tuyền Kí</h3><span class="badge">尚無足夠 Google 星等｜較遠</span></div><p class="desc">脆皮燒肉法國麵包，在 Thảo Điền；之前因為與主線方向相反而沒有排入。</p><div class="addr">56 Xuân Thủy, Thảo Điền</div><a class="map" href="https://maps.google.com/?q=Banh+mi+heo+quay+Tuyen+Ki+56+Xuan+Thuy+Thao+Dien" target="_blank">📍 Google Maps</a></article>
+
+<article class="food"><div class="food-top"><h3>🥣 Bánh Bèo Chợ Bến Thành</h3><span class="badge">尚無足夠 Google 星等｜市場備案</span></div><p class="desc">就在檳城市場 Phan Chu Trinh 側；逛市場時看到想吃再點，不需要另外排交通。</p><div class="addr">Phan Chu Trinh, Bến Thành</div><a class="map" href="https://maps.google.com/?q=Banh+Beo+Cho+Ben+Thanh+Phan+Chu+Trinh" target="_blank">📍 Google Maps</a></article>
+
+</div></section>
+<div class="notice"><b>🚕 Grab 距離／車資說明：</b>頁面顯示的是行程規劃用概算，依道路距離與胡志明市 GrabCar 基本費率估算，並以 <b>兩台 GrabCar</b> 合計呈現。尖峰動態加價、塞車、機場費、過路費與臨時改道可能使實際價格提高；出發前仍以 Grab App 顯示價格為準。</div><footer>Ho Chi Minh City · 2026/09/03–09/06 · Mobile Travel Guide</footer>
 </main>
 
-<nav class="bottom">
-  <div class="bottom-inner">
-    <a href="#itinerary"><b>🗓️</b>行程</a>
-    <a href="#food"><b>🍜</b>美食</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Piano+Hotel+165%2F42+Nguyen+Thai+Binh+Ho+Chi+Minh+City" target="_blank"><b>🏨</b>飯店</a>
-    <a href="https://maps.app.goo.gl/ffUHLnR1wC3QntoJ9?g_st=al" target="_blank"><b>🙏</b>龍華寺</a>
-  </div>
+<nav class="bottom" aria-label="快速導覽">
+<a href="#itinerary"><span>🗓️</span><b>行程</b></a>
+<a href="#food"><span>🍜</span><b>美食</b></a>
+<a href="#backup"><span>🧭</span><b>備案</b></a>
+<a href="#tips"><span>💡</span><b>提醒</b></a>
 </nav>
 
 <script>
